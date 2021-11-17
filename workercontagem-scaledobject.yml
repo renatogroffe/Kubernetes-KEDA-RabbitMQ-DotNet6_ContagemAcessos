@@ -1,0 +1,31 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: keda-trigger-auth-workercontagem
+spec:
+  secretTargetRef:
+    - parameter: host
+      name: workercontagemsecret
+      key: ConnectionRabbitMQ
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: workercontagem-scaledobject
+spec:
+  scaleTargetRef:
+    name: workercontagem
+  pollingInterval: 10
+  cooldownPeriod:  30
+  minReplicaCount: 0
+  maxReplicaCount: 10
+  triggers:
+  - type: rabbitmq
+    metadata:
+      protocol: amqp
+      mode: QueueLength
+      value: "50"
+      queueName: queue-testes
+      vhostName: /
+    authenticationRef:
+      name: keda-trigger-auth-workercontagem
