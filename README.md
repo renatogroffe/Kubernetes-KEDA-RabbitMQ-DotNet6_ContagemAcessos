@@ -11,6 +11,6 @@ Projeto que serviu de base para o **envio de mensagens a uma fila do RabbitMQ** 
 
 No arquivo **keda-instalacao&sdot;sh** estão as instruções para instalação do KEDA **(Kubernetes Event-driven Autoscaling)** em um **cluster Kubernetes**.
 
-Para os testes de carga que escalam a aplicação utilizei o pacote npm [**loadtest**](https://www.npmjs.com/package/loadtest). O exemplo a seguir procerá com o envio de **20 mil requisições**, simulando **100 usuários concorrentes**:
+Para os testes de carga que escalam a aplicação utilizei o pacote npm [**loadtest**](https://www.npmjs.com/package/loadtest). O exemplo a seguir procederá com o envio de **20 mil requisições**, simulando **100 usuários concorrentes**:
 
 **loadtest -c 100 -n 20000 -k** ***ENDPOINT***
