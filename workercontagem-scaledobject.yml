@@ -15,16 +15,16 @@ metadata:
 spec:
   scaleTargetRef:
     name: workercontagem
-  pollingInterval: 10
+  pollingInterval: 5
   cooldownPeriod:  30
   minReplicaCount: 0
-  maxReplicaCount: 10
+  maxReplicaCount: 5
   triggers:
   - type: rabbitmq
     metadata:
       protocol: amqp
       mode: QueueLength
-      value: "50"
+      value: "100"
       queueName: queue-testes
       vhostName: /
     authenticationRef:
